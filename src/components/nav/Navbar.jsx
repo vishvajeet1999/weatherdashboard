@@ -14,7 +14,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCurrentWeather, updateHistory } from '../../store/weather';
 
-export default function SimpleWeatherNavbar() {
+export default function SimpleWeatherNavbar({handleOpen}) {
     const [searchQuery, setSearchQuery] = useState('');
     const { weatherSeachHistory } = useSelector(state => state.weather);
     const dispatch = useDispatch();
@@ -58,6 +58,7 @@ export default function SimpleWeatherNavbar() {
             setSpinner(false)
         } catch (error) {
             setSpinner(false)
+            handleOpen();
             console.log(error, 'Error')
         }
     };
