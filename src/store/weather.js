@@ -1,21 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    currentCityData: null,
-    history: null,
+    currentWeather: null,
+    weatherSeachHistory: null,
 }
 
 const weatherSlice = createSlice({
     name: 'weather',
     initialState,
     reducers: {
-        addToHistory: (state, action) => {
-            state.history = action.payload.value
+        updateHistory: (state, action) => {
+            state.weatherSeachHistory = action.payload.value
         },
-        addCurrentCityData: (state, action) => {
-            state.currentCityData = action.payload.value
+        updateCurrentWeather: (state, action) => {
+            state.currentWeather = action.payload.value
         },
-
         resetWeather: (state) => {
             state = initialState
         }
@@ -24,5 +23,5 @@ const weatherSlice = createSlice({
 
 });
 
-export const { addToHistory, addCurrentCityData } = weatherSlice.actions;
+export const { updateHistory, updateCurrentWeather } = weatherSlice.actions;
 export default weatherSlice.reducer;

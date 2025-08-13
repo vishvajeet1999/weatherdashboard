@@ -22,39 +22,54 @@ function getConditionIcon(condition) {
     case 'Rainy':
       return <UmbrellaIcon color="primary" fontSize="large" />;
     default:
-      return null;
+      return <WbSunnyIcon color="warning" fontSize="large" />;
   }
 }
 
 function WeatherDisplay() {
-  const weather = useSelector(state => state.weather)
-  console.log('Weather data from Redux:', weather);
-  return (
-    <Card sx={{ minWidth: 275 }}>
+  const { currentWeather } = useSelector(state => state.weather);
+  if (!currentWeather) {
+    return <Card sx={{ minWidth: 200,height: "100%"}}>
       <CardContent>
         <Typography variant="h6" gutterBottom>
-          Current Weather Details
+          Weather details
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mt: 2, }}
+        >
+          Please enter a location to get the weather details.
+        </Typography>
+      </CardContent>
+    </Card>
+  }
+  return (
+    <Card sx={{ minWidth: 275, height: "100%" }}>
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
+          Weather Details
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-          {weatherData.city}
+          {currentWeather.location.name}
         </Typography>
         <Grid container spacing={2} alignItems="center">
           <Grid item>
-            {getConditionIcon(weatherData.condition)}
+            {getConditionIcon(currentWeather.current.condition.text)}
           </Grid>
           <Grid item xs>
-            <Typography variant="h4">{weatherData.temperature}</Typography>
-            <Typography variant="subtitle1">{weatherData.condition}</Typography>
+            <Typography variant="h4">{currentWeather.current.temp_c}°C</Typography>
+            <Typography variant="subtitle1">{currentWeather.current.condition.text}</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} sx={{ mt: 2 }}>
           <Grid item xs={6}>
             <Typography variant="body1">Wind Speed</Typography>
-            <Typography variant="body2">{weatherData.windSpeed}</Typography>
+            <Typography variant="body2">{currentWeather.current.wind_kph}km/h</Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body1">Humidity</Typography>
-            <Typography variant="body2">{weatherData.humidity}</Typography>
+            <Typography variant="body2">{currentWeather.current.humidity}%</Typography>
           </Grid>
         </Grid>
       </CardContent>

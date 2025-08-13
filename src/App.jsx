@@ -13,14 +13,16 @@ function App() {
   return (
     <Provider store={store}>
       <Navbar />
-      <Grid container  sx={{ padding: 2  }}>
-        <Grid item size={{ xs: 12, md: 8}}>
+      <Grid container spacing={2} sx={{ padding: 2 }}>
+        <Grid size={{
+          xs: 12, md: 8, border: '1px solid red'
+        }}>
           <WeatherDisplay />
         </Grid>
-        <Grid item size={{ xs: 12, md: 4}}>
+        <Grid size={{ xs: 12, md: 4, }}>
           <OutfitRecommendation />
         </Grid>
-        <Grid item size={{ xs: 12, md: 12}}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <SearchHistoy />
         </Grid>
 
