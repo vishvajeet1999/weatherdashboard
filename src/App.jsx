@@ -4,11 +4,14 @@ import WeatherDisplay from './components/weatherDisplay/WeatherDisplay.jsx';
 import OutfitRecommendation from './components/outfitRecommendation/OutfitRecommendation.jsx';
 import { Grid } from '@mui/material';
 import SearchHistoy from './components/searchHistory/SearchHistoy.jsx';
+import { Provider } from 'react-redux';
+import { store } from './store/index.js';
+
 
 function App() {
 
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Grid container  sx={{ padding: 2  }}>
         <Grid item size={{ xs: 12, md: 8}}>
@@ -22,7 +25,7 @@ function App() {
         </Grid>
 
       </Grid>
-    </>
+    </Provider>
   )
 }
 

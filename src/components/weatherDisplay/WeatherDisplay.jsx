@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Grid } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import CloudIcon from '@mui/icons-material/Cloud';
 import UmbrellaIcon from '@mui/icons-material/Umbrella';
+import { useSelector } from 'react-redux';
 
 const weatherData = {
   city: 'Delhi',
@@ -26,6 +27,8 @@ function getConditionIcon(condition) {
 }
 
 function WeatherDisplay() {
+  const weather = useSelector(state => state.weather)
+  console.log('Weather data from Redux:', weather);
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
