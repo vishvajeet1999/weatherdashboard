@@ -1,12 +1,44 @@
-# React + Vite
+A simple weather dashboard where users enter a city name to see current weather and receive an outfit suggestion based on temperature and conditions. Includes a searchable history (last 5 cities), robust error handling, and a responsive UI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Features:
 
-Currently, two official plugins are available:
+City Search – Type a city and fetch weather.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Weather Display – Temperature, condition (sunny/rainy/cloudy), wind speed, humidity.
 
-## Expanding the ESLint configuration
+Outfit Recommendation – Helpful tips (e.g., umbrella for rain, jacket for cold).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Search History – Shows the last 5 searched cities (in-memory).
+
+Responsive UI – Looks good on mobile and desktop.
+
+Graceful Errors – Invalid city, network/API failures handled nicely.
+
+🧰 Tech Stack
+React + Vite
+
+Redux Toolkit (state for current weather + history)
+
+Axios for HTTP
+
+MUI (Material UI) for components
+
+🚀 Getting Started
+1) Prerequisites
+Node.js 18+
+
+npm or yarn
+
+2) git clone <repo-url>
+cd <your-project>
+
+npm install
+3) Environment Variables
+Create a .env file at the project root. With Vite, variables must start with VITE_.
+
+env
+VITE_WEATHER_API_KEY=4dc30aeeb92747fa88f94543251308
+
+
+4) Run
+npm run dev
